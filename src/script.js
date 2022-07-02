@@ -30,6 +30,19 @@ const generateJobInfo = ({postedAt, contract, location}) => {
   return ul;
 };
 
+const createLanguagesList = ({languages}) => {
+  const languagesList = newElement('div', 'languages');
+
+  languages.forEach((language) => {
+    const span = newElement('span');
+
+    span.innerText = language;
+    languagesList.appendChild(span);
+  });
+
+  return languagesList;
+};
+
 const createJobsList = () => {
   const listEl = $('job_listings');
 
@@ -40,6 +53,7 @@ const createJobsList = () => {
     card.append(
         createCardHeader(listing),
         generateJobInfo(listing),
+        createLanguagesList(listing),
     );
 
     listEl.appendChild(card);
