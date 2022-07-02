@@ -17,6 +17,19 @@ const createCardHeader = ({logo, company, featured, isNew}) => {
   return headerEl;
 };
 
+const generateJobInfo = ({postedAt, contract, location}) => {
+  const ul = newElement('ul', 'job-infos');
+
+  [postedAt, contract, location].forEach((info) => {
+    const li = newElement('li');
+
+    li.innerText = info;
+    ul.appendChild(li);
+  });
+
+  return ul;
+};
+
 const createJobsList = () => {
   const listEl = $('job_listings');
 
@@ -24,7 +37,11 @@ const createJobsList = () => {
     console.log(listing);
     const card = newElement('div', 'job-card');
 
-    card.append(createCardHeader(listing));
+    card.append(
+        createCardHeader(listing),
+        generateJobInfo(listing),
+    );
+
     listEl.appendChild(card);
   });
 };
