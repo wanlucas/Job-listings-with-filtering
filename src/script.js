@@ -47,7 +47,6 @@ const createJobsList = () => {
   const listEl = $('job_listings');
 
   JobListings.forEach((listing) => {
-    console.log(listing);
     const card = newElement('div', 'job-card');
 
     card.append(
